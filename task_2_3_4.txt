@@ -1,0 +1,48 @@
+trait Maybe[A] {}
+
+class No extends Maybe[Nothing] {
+  def applyFunction[A, R](function: A=>R): No = {
+    this
+  }
+  
+  def getOrElse[R](parameter: R): R = {
+    parameter
+  }
+}
+
+class Yes[A] (value: A) extends Maybe[A] {
+  def applyFunction[R](function: A=>R): Yes[R] = {
+    Yes(function(value))
+  }
+  
+  def getOrElse(): A = {
+    value
+  }
+}
+
+val no = No()
+
+val yes = Yes(2)
+
+println("Task_2_Results")
+println("No is instance of Maybe[_]: "+no.isInstanceOf[Maybe[_]])
+println("Yes is instance of Maybe[_]: "+yes.isInstanceOf[Maybe[_]])
+
+println("Task_3_Results")
+println(no.applyFunction(a => a))
+println(yes.applyFunction(a => a+1))
+
+println("Task_4_Results: ")
+println("yes.getOrElse(): "+yes.getOrElse())
+println("no.getOrElse(): "+no.getOrElse("sd"))
+
+
+Task_2_Results
+No is instance of Maybe[_]: true
+Yes is instance of Maybe[_]: true
+Task_3_Results
+Playground$No@3e607511
+Playground$Yes@4c440e94
+Task_4_Results: 
+yes.getOrElse(): 2
+no.getOrElse(): sd

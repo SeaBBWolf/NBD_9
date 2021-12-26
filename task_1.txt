@@ -1,0 +1,41 @@
+class Container[A] (value: A){
+  private var _value: A = value
+  
+  def getContent: A = _value
+  
+  def applyFunction[R](function: A=>R): R = function(value)
+}
+
+
+println("Task_1_Results")
+val container = Container(1)
+println("Content: "+container.getContent)
+println("Funcrion: "+container.applyFunction(a => 1+a))
+
+val container2 = Container("test")
+println("Content2: "+container2.getContent)
+println("Funcrion2: "+container2.applyFunction(a => "hi "+a))class Container[A] (value: A){
+  private var _value: A = value
+  
+  def getContent: A = _value
+  
+  def applyFunction[R](function: A=>R): R = function(value)
+}
+
+
+println("Task_1_Results")
+val container = Container(1)
+println("Content: "+container.getContent)
+println("Funcrion: "+container.applyFunction(a => 1+a))
+
+val container2 = Container("test")
+println("Content2: "+container2.getContent)
+println("Funcrion2: "+container2.applyFunction(a => "hi "+a))
+
+
+
+Task_1_Results
+Content: 1
+Funcrion: 2
+Content2: test
+Funcrion2: hi test
